@@ -3,8 +3,8 @@ package cm;
 import java.util.List;
 
 public class Period {
-     private int startHour;
-     private int endHour;
+     private final int startHour;
+     private final int endHour;
 
     public Period(int start, int end) {
         if (start >= end) {
@@ -38,7 +38,7 @@ public class Period {
 
     /**
      * The duration of a period
-     * @return the number of whole hours a this period covers
+     * @return the number of whole hours this period covers
      */
     public int duration() {
         return this.endHour - this.startHour;

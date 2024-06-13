@@ -7,7 +7,6 @@ public class RateCalculatorFactory {
             case CarParkKind.STUDENT -> new StudentRateCalculator();
             case CarParkKind.STAFF -> new StaffRateCalculator();
             case CarParkKind.MANAGEMENT -> new ManagementRateCalculator();
-            default -> throw new IllegalArgumentException("Unsupported CarParkKind: " + kind);
         };
     }
 }
