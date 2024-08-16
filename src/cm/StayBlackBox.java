@@ -28,4 +28,18 @@ public class StayBlackBox {
         assertEquals(charge, stay.getCharge());
     }
 
+    @Test
+    @DisplayName("Stay instantiation with entryDateTime after exitDateTime")
+    void stayInstantiationInvalidDates() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 13, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true;
+
+        assertThrows(IllegalArgumentException.class, () -> new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, sameCarParkValidator));
+    }
+
 }
