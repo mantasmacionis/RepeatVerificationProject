@@ -17,4 +17,13 @@ public class GateBlackBox {
         assertEquals(location, gate.getLocation());
     }
 
+    @Test
+    @DisplayName("Gate instantiation with negative gateId")
+    void gateInstantiationNegativeGateId() {
+        int gateId = -1;
+        String location = "Gate A";
+
+        assertThrows(IllegalArgumentException.class, () -> new Gate(gateId, location));
+    }
+
 }
