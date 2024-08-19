@@ -66,4 +66,12 @@ public class StayBlackBox {
         assertThrows(NullPointerException.class, () -> new Stay(new Gate(1, "Entry Gate A"), new Gate(2, "Exit Gate B"), null, LocalDateTime.of(2024, 8, 1, 12, 0), new BigDecimal("10.00"), sameCarParkValidator));
     }
 
+    @Test
+    @DisplayName("Stay instantiation with null exitDateTime throws NullPointerException")
+    void stayInstantiationNullExitDateTime() {
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true;
+
+        assertThrows(NullPointerException.class, () -> new Stay(new Gate(1, "Entry Gate A"), new Gate(2, "Exit Gate B"), LocalDateTime.of(2024, 8, 1, 10, 0), null, new BigDecimal("10.00"), sameCarParkValidator));
+    }
+
 }
