@@ -82,4 +82,12 @@ public class StayBlackBox {
         assertThrows(NullPointerException.class, () -> new Stay(new Gate(1, "Entry Gate A"), new Gate(2, "Exit Gate B"), LocalDateTime.of(2024, 8, 1, 10, 0), LocalDateTime.of(2024, 8, 1, 12, 0), null, sameCarParkValidator));
     }
 
+    @Test
+    @DisplayName("Stay instantiation with negative charge throws IllegalArgumentException")
+    void stayInstantiationNegativeCharge() {
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true;
+
+        assertThrows(IllegalArgumentException.class, () -> new Stay(new Gate(1, "Entry Gate A"), new Gate(2, "Exit Gate B"), LocalDateTime.of(2024, 8, 1, 10, 0), LocalDateTime.of(2024, 8, 1, 12, 0), new BigDecimal("-10.00"), sameCarParkValidator));
+    }
+
 }
