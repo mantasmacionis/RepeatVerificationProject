@@ -106,4 +106,22 @@ public class StayBlackBox {
         assertEquals(gate, stay.getExitGate());
     }
 
+    @Test
+    @DisplayName("Stay equality and hashCode")
+    void stayEqualityAndHashCode() {
+        Gate entryGate1 = new Gate(1, "Entry Gate A");
+        Gate exitGate1 = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime1 = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime1 = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge1 = new BigDecimal("10.00");
+
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true;
+
+        Stay stay1 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, sameCarParkValidator);
+        Stay stay2 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, sameCarParkValidator);
+
+        assertEquals(stay1, stay2);
+        assertEquals(stay1.hashCode(), stay2.hashCode());
+    }
+
 }
