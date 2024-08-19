@@ -26,4 +26,13 @@ public class GateBlackBox {
         assertThrows(IllegalArgumentException.class, () -> new Gate(gateId, location));
     }
 
+    @Test
+    @DisplayName("Gate instantiation with null location")
+    void gateInstantiationNullLocation() {
+        int gateId = 1;
+        String location = null;
+
+        assertThrows(IllegalArgumentException.class, () -> new Gate(gateId, location));
+    }
+
 }
