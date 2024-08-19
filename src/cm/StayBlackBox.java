@@ -90,4 +90,20 @@ public class StayBlackBox {
         assertThrows(IllegalArgumentException.class, () -> new Stay(new Gate(1, "Entry Gate A"), new Gate(2, "Exit Gate B"), LocalDateTime.of(2024, 8, 1, 10, 0), LocalDateTime.of(2024, 8, 1, 12, 0), new BigDecimal("-10.00"), sameCarParkValidator));
     }
 
+    @Test
+    @DisplayName("Stay instantiation with identical entry and exit gates")
+    void stayInstantiationIdenticalGates() {
+        Gate gate = new Gate(1, "Gate A");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true;
+
+        Stay stay = new Stay(gate, gate, entryDateTime, exitDateTime, charge, sameCarParkValidator);
+
+        assertEquals(gate, stay.getEntryGate());
+        assertEquals(gate, stay.getExitGate());
+    }
+
 }
