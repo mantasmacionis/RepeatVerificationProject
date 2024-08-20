@@ -17,4 +17,12 @@ public class Gate {
         this.gateId = gateId;
         this.location = location;
     }
+
+    public int getGateId() {
+        return gateId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
 }
