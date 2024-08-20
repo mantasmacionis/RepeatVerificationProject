@@ -68,4 +68,14 @@ public class Stay {
         if (!exitDateTime.equals(stay.exitDateTime)) return false;
         return charge.equals(stay.charge);
     }
+
+    @Override
+    public int hashCode() {
+        int result = entryGate.hashCode();
+        result = 31 * result + exitGate.hashCode();
+        result = 31 * result + entryDateTime.hashCode();
+        result = 31 * result + exitDateTime.hashCode();
+        result = 31 * result + charge.hashCode();
+        return result;
+    }
 }
