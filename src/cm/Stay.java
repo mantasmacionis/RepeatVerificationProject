@@ -79,3 +79,8 @@ public class Stay {
         return result;
     }
 }
+
+@FunctionalInterface
+interface CarParkValidator {
+    boolean belongToSameCarPark(Gate entryGate, Gate exitGate);
+}
