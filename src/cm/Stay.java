@@ -54,4 +54,18 @@ public class Stay {
     public BigDecimal getCharge() {
         return charge;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Stay stay = (Stay) o;
+
+        if (!entryGate.equals(stay.entryGate)) return false;
+        if (!exitGate.equals(stay.exitGate)) return false;
+        if (!entryDateTime.equals(stay.entryDateTime)) return false;
+        if (!exitDateTime.equals(stay.exitDateTime)) return false;
+        return charge.equals(stay.charge);
+    }
 }
