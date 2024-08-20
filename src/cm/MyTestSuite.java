@@ -24,4 +24,11 @@ public class MyTestSuite {
 
         assertFalse(gate.equals(null)); // Comparing with null
     }
+
+    @Test
+    @DisplayName("Gate equals: comparison with different object type returns false")
+    void gateEqualsDifferentTypeComparison() {
+        Gate gate = new Gate(1, "Gate A");
+        assertFalse(gate.equals("Some String"));
+    }
 }
