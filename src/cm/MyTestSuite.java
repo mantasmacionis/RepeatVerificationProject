@@ -16,4 +16,12 @@ public class MyTestSuite {
         Gate gate = new Gate(1, "Gate A");
         assertTrue(gate.equals(gate));
     }
+
+    @Test
+    @DisplayName("Gate equals: comparison with null returns false")
+    void gateEqualsNullComparison() {
+        Gate gate = new Gate(1, "Gate A");
+
+        assertFalse(gate.equals(null)); // Comparing with null
+    }
 }
