@@ -33,4 +33,9 @@ public class Gate {
         Gate gate = (Gate) o;
         return gateId == gate.gateId && Objects.equals(location, gate.location);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gateId, location);
+    }
 }
