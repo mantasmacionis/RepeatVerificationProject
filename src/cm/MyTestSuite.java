@@ -31,4 +31,13 @@ public class MyTestSuite {
         Gate gate = new Gate(1, "Gate A");
         assertFalse(gate.equals("Some String"));
     }
+
+    @Test
+    @DisplayName("Gate equals: comparison with a gate having a different gateId returns false")
+    void gateEqualsDifferentGateId() {
+        Gate gate1 = new Gate(1, "Gate A");
+        Gate gate2 = new Gate(2, "Gate A"); // Different gateId
+
+        assertFalse(gate1.equals(gate2));
+    }
 }
