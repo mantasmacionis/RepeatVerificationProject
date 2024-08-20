@@ -34,4 +34,24 @@ public class Stay {
         this.charge = charge;
         this.carParkValidator = carParkValidator;
     }
+
+    public Gate getEntryGate() {
+        return entryGate;
+    }
+
+    public Gate getExitGate() {
+        return exitGate;
+    }
+
+    public LocalDateTime getEntryDateTime() {
+        return entryDateTime;
+    }
+
+    public LocalDateTime getExitDateTime() {
+        return exitDateTime;
+    }
+
+    public BigDecimal getCharge() {
+        return charge;
+    }
 }
