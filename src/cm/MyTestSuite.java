@@ -7,4 +7,13 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyTestSuite {
+
+    /* GATE WHITE BOX TESTS START */
+
+    @Test
+    @DisplayName("Gate equals: self-comparison returns true")
+    void gateEqualsSelfComparison() {
+        Gate gate = new Gate(1, "Gate A");
+        assertTrue(gate.equals(gate));
+    }
 }
