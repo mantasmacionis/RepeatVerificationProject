@@ -146,4 +146,17 @@ public class MyTestSuite {
         Stay stay = new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true);
         assertFalse(stay.equals(null));
     }
+
+    @Test
+    @DisplayName("Stay equals: comparison with different object type returns false")
+    void stayEqualsDifferentTypeComparison() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        Stay stay = new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true);
+        assertFalse(stay.equals("Some String"));
+    }
 }
