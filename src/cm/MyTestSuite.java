@@ -57,4 +57,14 @@ public class MyTestSuite {
         Gate gate2 = new Gate(1, "Gate A");
         assertEquals(gate1.hashCode(), gate2.hashCode());
     }
+
+    @Test
+    @DisplayName("Gate hashCode: different gateId or location should produce different hashCode")
+    void gateHashCodeDifferentAttributes() {
+        Gate gate1 = new Gate(1, "Gate A");
+        Gate gate2 = new Gate(2, "Gate A");
+        Gate gate3 = new Gate(1, "Gate B");
+        assertNotEquals(gate1.hashCode(), gate2.hashCode());
+        assertNotEquals(gate1.hashCode(), gate3.hashCode());
+    }
 }
