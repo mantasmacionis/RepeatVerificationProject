@@ -40,4 +40,13 @@ public class MyTestSuite {
 
         assertFalse(gate1.equals(gate2));
     }
+
+    @Test
+    @DisplayName("Gate equals: comparison with a gate having a different location returns false")
+    void gateEqualsDifferentLocation() {
+        Gate gate1 = new Gate(1, "Gate A");
+        Gate gate2 = new Gate(1, "Gate B"); // Different location
+
+        assertFalse(gate1.equals(gate2));
+    }
 }
