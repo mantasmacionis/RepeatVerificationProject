@@ -49,4 +49,12 @@ public class MyTestSuite {
 
         assertFalse(gate1.equals(gate2));
     }
+
+    @Test
+    @DisplayName("Gate hashCode: same gateId and location should produce same hashCode")
+    void gateHashCodeSameAttributes() {
+        Gate gate1 = new Gate(1, "Gate A");
+        Gate gate2 = new Gate(1, "Gate A");
+        assertEquals(gate1.hashCode(), gate2.hashCode());
+    }
 }
