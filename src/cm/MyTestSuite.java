@@ -73,4 +73,10 @@ public class MyTestSuite {
     void gateInstantiationNegativeGateId() {
         assertThrows(IllegalArgumentException.class, () -> new Gate(-1, "Gate A"));
     }
+
+    @Test
+    @DisplayName("Gate instantiation with null location throws IllegalArgumentException")
+    void gateInstantiationNullLocation() {
+        assertThrows(IllegalArgumentException.class, () -> new Gate(1, null));
+    }
 }
