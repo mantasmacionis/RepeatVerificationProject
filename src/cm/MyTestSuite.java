@@ -85,4 +85,11 @@ public class MyTestSuite {
     void gateInstantiationEmptyLocation() {
         assertThrows(IllegalArgumentException.class, () -> new Gate(1, ""));
     }
+
+    @Test
+    @DisplayName("Gate getter for gateId")
+    void gateGetGateId() {
+        Gate gate = new Gate(1, "Gate A");
+        assertEquals(1, gate.getGateId());
+    }
 }
