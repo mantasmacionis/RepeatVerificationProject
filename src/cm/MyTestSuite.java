@@ -175,4 +175,20 @@ public class MyTestSuite {
 
         assertFalse(stay1.equals(stay2));
     }
+
+    @Test
+    @DisplayName("Stay equals: different exitGate")
+    void stayEqualsDifferentExitGate() {
+        Gate entryGate1 = new Gate(1, "Entry Gate A");
+        Gate exitGate1 = new Gate(2, "Exit Gate B");
+        Gate exitGate2 = new Gate(3, "Exit Gate C"); // Different gate
+        LocalDateTime entryDateTime1 = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime1 = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge1 = new BigDecimal("10.00");
+
+        Stay stay1 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, (g1, g2) -> true);
+        Stay stay2 = new Stay(entryGate1, exitGate2, entryDateTime1, exitDateTime1, charge1, (g1, g2) -> true);
+
+        assertFalse(stay1.equals(stay2));
+    }
 }
