@@ -99,4 +99,13 @@ public class MyTestSuite {
         Gate gate = new Gate(1, "Gate A");
         assertEquals("Gate A", gate.getLocation());
     }
+
+    @Test
+    @DisplayName("Gate equals: comparison with identical gates returns true")
+    void gateEqualsIdenticalGates() {
+        Gate gate1 = new Gate(1, "Gate A");
+        Gate gate2 = new Gate(1, "Gate A"); // Identical gateId and location
+
+        assertTrue(gate1.equals(gate2));
+    }
 }
