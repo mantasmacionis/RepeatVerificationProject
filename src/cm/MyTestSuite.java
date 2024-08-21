@@ -116,4 +116,8 @@ public class MyTestSuite {
 
         assertFalse(gate.equals("Some String")); // Comparing with different object type
     }
+
+    /* GATE WHITE BOX TESTS END */
+
+    /* STAY WHITE BOX TESTS START */
 }
