@@ -92,4 +92,11 @@ public class MyTestSuite {
         Gate gate = new Gate(1, "Gate A");
         assertEquals(1, gate.getGateId());
     }
+
+    @Test
+    @DisplayName("Gate getter for location")
+    void gateGetLocation() {
+        Gate gate = new Gate(1, "Gate A");
+        assertEquals("Gate A", gate.getLocation());
+    }
 }
