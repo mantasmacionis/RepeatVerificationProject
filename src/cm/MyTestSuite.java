@@ -67,4 +67,10 @@ public class MyTestSuite {
         assertNotEquals(gate1.hashCode(), gate2.hashCode());
         assertNotEquals(gate1.hashCode(), gate3.hashCode());
     }
+
+    @Test
+    @DisplayName("Gate instantiation with negative gateId throws IllegalArgumentException")
+    void gateInstantiationNegativeGateId() {
+        assertThrows(IllegalArgumentException.class, () -> new Gate(-1, "Gate A"));
+    }
 }
