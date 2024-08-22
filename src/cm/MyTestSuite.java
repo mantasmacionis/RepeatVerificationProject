@@ -273,4 +273,18 @@ public class MyTestSuite {
         assertNotEquals(stay1.hashCode(), stay2.hashCode());
     }
 
+    @Test
+    @DisplayName("Stay instantiation with different gates in different CarParks throws exception")
+    void stayInstantiationDifferentCarParks() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        CarParkValidator differentCarParkValidator = (g1, g2) -> false;
+
+        assertThrows(IllegalArgumentException.class, () -> new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, differentCarParkValidator));
+    }
+
 }
