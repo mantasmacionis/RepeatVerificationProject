@@ -282,9 +282,24 @@ public class MyTestSuite {
         LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
         BigDecimal charge = new BigDecimal("10.00");
 
-        CarParkValidator differentCarParkValidator = (g1, g2) -> false;
+        CarParkValidator differentCarParkValidator = (g1, g2) -> false; // Simulates different carPark
 
         assertThrows(IllegalArgumentException.class, () -> new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, differentCarParkValidator));
     }
 
+    @Test
+    @DisplayName("Stay instantiation with gates in the same CarPark does not throw exception")
+    void stayInstantiationSameCarParks() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        CarParkValidator sameCarParkValidator = (g1, g2) -> true; // Simulates the same CarPark
+
+        Stay stay = new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, sameCarParkValidator);
+
+        assertNotNull(stay);
+    }
 }
