@@ -240,4 +240,19 @@ public class MyTestSuite {
         assertFalse(stay1.equals(stay2));
     }
 
+    @Test
+    @DisplayName("Stay hashCode: same attributes should produce same hashCode")
+    void stayHashCodeSameAttributes() {
+        Gate entryGate1 = new Gate(1, "Entry Gate A");
+        Gate exitGate1 = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime1 = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime1 = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge1 = new BigDecimal("10.00");
+
+        Stay stay1 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, (g1, g2) -> true);
+        Stay stay2 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, (g1, g2) -> true);
+
+        assertEquals(stay1.hashCode(), stay2.hashCode());
+    }
+
 }
