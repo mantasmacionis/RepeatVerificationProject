@@ -255,4 +255,22 @@ public class MyTestSuite {
         assertEquals(stay1.hashCode(), stay2.hashCode());
     }
 
+    @Test
+    @DisplayName("Stay hashCode: different attributes should produce different hashCode")
+    void stayHashCodeDifferentAttributes() {
+        Gate entryGate1 = new Gate(1, "Entry Gate A");
+        Gate exitGate1 = new Gate(2, "Exit Gate B");
+        Gate exitGate2 = new Gate(3, "Exit Gate C"); // Different gate
+        LocalDateTime entryDateTime1 = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime1 = LocalDateTime.of(2024, 8, 1, 12, 0);
+        LocalDateTime exitDateTime2 = LocalDateTime.of(2024, 8, 1, 13, 0); // Different time
+        BigDecimal charge1 = new BigDecimal("10.00");
+        BigDecimal charge2 = new BigDecimal("20.00"); // Different charge
+
+        Stay stay1 = new Stay(entryGate1, exitGate1, entryDateTime1, exitDateTime1, charge1, (g1, g2) -> true);
+        Stay stay2 = new Stay(entryGate1, exitGate2, entryDateTime1, exitDateTime2, charge2, (g1, g2) -> true);
+
+        assertNotEquals(stay1.hashCode(), stay2.hashCode());
+    }
+
 }
