@@ -342,4 +342,18 @@ public class MyTestSuite {
 
         assertThrows(IllegalArgumentException.class, () -> new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true));
     }
+
+    @Test
+    @DisplayName("Stay getter for entryGate")
+    void stayGetEntryGate() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        Stay stay = new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true);
+
+        assertEquals(entryGate, stay.getEntryGate());
+    }
 }
