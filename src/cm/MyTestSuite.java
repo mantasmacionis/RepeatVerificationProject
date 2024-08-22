@@ -398,4 +398,18 @@ public class MyTestSuite {
 
         assertEquals(exitDateTime, stay.getExitDateTime());
     }
+
+    @Test
+    @DisplayName("Stay getter for charge")
+    void stayGetCharge() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        Stay stay = new Stay(entryGate, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true);
+
+        assertEquals(charge, stay.getCharge());
+    }
 }
