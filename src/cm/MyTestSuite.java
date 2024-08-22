@@ -412,4 +412,6 @@ public class MyTestSuite {
 
         assertEquals(charge, stay.getCharge());
     }
+
+    /* STAY WHITE BOX TESTS END */
 }
