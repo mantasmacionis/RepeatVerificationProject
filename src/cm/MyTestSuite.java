@@ -302,4 +302,20 @@ public class MyTestSuite {
 
         assertNotNull(stay);
     }
+
+    @Test
+    @DisplayName("Stay instantiation with null parameters throws NullPointerException")
+    void stayInstantiationNullParameters() {
+        Gate entryGate = new Gate(1, "Entry Gate A");
+        Gate exitGate = new Gate(2, "Exit Gate B");
+        LocalDateTime entryDateTime = LocalDateTime.of(2024, 8, 1, 10, 0);
+        LocalDateTime exitDateTime = LocalDateTime.of(2024, 8, 1, 12, 0);
+        BigDecimal charge = new BigDecimal("10.00");
+
+        assertThrows(NullPointerException.class, () -> new Stay(null, exitGate, entryDateTime, exitDateTime, charge, (g1, g2) -> true));
+        assertThrows(NullPointerException.class, () -> new Stay(entryGate, null, entryDateTime, exitDateTime, charge, (g1, g2) -> true));
+        assertThrows(NullPointerException.class, () -> new Stay(entryGate, exitGate, null, exitDateTime, charge, (g1, g2) -> true));
+        assertThrows(NullPointerException.class, () -> new Stay(entryGate, exitGate, entryDateTime, null, charge, (g1, g2) -> true));
+        assertThrows(NullPointerException.class, () -> new Stay(entryGate, exitGate, entryDateTime, exitDateTime, null, (g1, g2) -> true));
+    }
 }
